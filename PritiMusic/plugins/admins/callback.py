@@ -12,6 +12,9 @@ from PritiMusic.utils.database import (
     get_active_chats, get_lang, get_upvote_count, is_active_chat,
     is_music_playing, is_nonadmin_chat, music_off, music_on, set_loop, get_assistant
 )
+# ✅ Added Autoplay database imports
+from PritiMusic.utils.database.autoplay import is_autoplay_group, add_autoplay_group, remove_autoplay_group
+
 from PritiMusic.utils.decorators.language import languageCB
 from PritiMusic.utils.formatters import seconds_to_min
 from PritiMusic.utils.inline import close_markup, stream_markup, stream_markup_timer
@@ -223,6 +226,25 @@ async def del_back_playlist(client, CallbackQuery, _):
         await set_loop(chat_id, 0)
         await CallbackQuery.message.reply_text(_["admin_5"].format(mention), reply_markup=close_markup(_))
         await CallbackQuery.message.delete()
+        
+    # ✅ AUTOPLAY BUTTON LOGIC ADDED HERE
+    elif command == "Autoplay":
+        state = await is_autoplay_group(chat_id)
+        if state:
+            await remove_autoplay_group(chat_id)
+            await CallbackQuery.answer("🔴 Autoplay Disabled!", show_alert=True)
+            await CallbackQuery.message.reply_text(
+                f"**🎧 𝐀𝐮𝐭𝐨𝐩𝐥𝐚𝐲 𝐒𝐲𝐬𝐭𝐞𝐦**\n\nGroup ke liye autoplay status ab **Disabled 🔴** hai.\n└ ʙʏ : {mention}", 
+                reply_markup=close_markup(_)
+            )
+        else:
+            await add_autoplay_group(chat_id)
+            await CallbackQuery.answer("🟢 Autoplay Enabled!", show_alert=True)
+            await CallbackQuery.message.reply_text(
+                f"**🎧 𝐀𝐮𝐭𝐨𝐩𝐥𝐚𝐲 𝐒𝐲𝐬𝐭𝐞𝐦**\n\nGroup ke liye autoplay status ab **Enabled 🟢** hai.\n└ ʙʏ : {mention}", 
+                reply_markup=close_markup(_)
+            )
+            
     elif command == "Skip" or command == "Replay":
         check = db.get(chat_id)
         if not check or len(check) == 0:
@@ -311,4 +333,4 @@ asyncio.create_task(markup_timer())
 @app.on_message(filters.video & filters.private)
 async def get_my_own_file_id(client, message):
     await message.reply_text(f"**Mera Video File ID (Isko Copy Karo):**\n`{message.video.file_id}`")
-# --- YAHAN KHATAM --
+# --- YAHAN KHATAM ---
