@@ -21,7 +21,7 @@ def get_random_help_img():
         if isinstance(HELP_IMG_URL, list):
             return random.choice(HELP_IMG_URL)
         return HELP_IMG_URL
-    return "https://files.catbox.moe/10zwqs.jpg" # Fallback
+    return "https://litter.catbox.moe/28yetc.jpg" # Fallback
 
 @Client.on_message(filters.command(["help"]) & filters.private & ~BANNED_USERS)
 @Client.on_callback_query(filters.regex("settings_back_helper") & ~BANNED_USERS)
