@@ -23,9 +23,9 @@ class Userbot(Client):
         if config.STRING1:
             await self.one.start()
             try:
-                await self.one.join_chat("https://t.me/betabot_hub")
-                await self.one.join_chat("https://t.me/betabot_support")
-                await self.one.join_chat("https://t.me/sukoon_s")
+                await self.one.join_chat("https://t.me/StylishNameFont")
+                await self.one.join_chat("https://t.me/BOTXPRO1")
+                await self.one.join_chat("https://t.me/Nysa_Bots")
             except:
                 pass
             assistants.append(1)
