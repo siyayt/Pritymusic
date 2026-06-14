@@ -15,7 +15,7 @@ OWNER_USERNAME = getenv("OWNER_USERNAME", "")
 BOT_USERNAME = getenv("BOT_USERNAME", "")
 BOT_NAME = getenv("BOT_NAME", "")
 ASSUSERNAME = getenv("ASSUSERNAME", "")
-BOT_LINK = getenv("BOT_LINK", "https://t.me/clone_MUSICrobot")
+BOT_LINK = getenv("BOT_LINK", "https://t.me/nysamusicbot")
 
 MONGO_DB_URI = getenv("MONGO_DB_URI")
 
@@ -45,13 +45,13 @@ HEROKU_API_KEY = getenv("HEROKU_API_KEY")
 
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "https://github.com/TEAM-ISTKHAR/aba",
+    "https://github.com/siyayt/Pritymusic",
 )
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 GIT_TOKEN = getenv("GIT_TOKEN", "")
 
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/KavyaBots")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/+2r69IqsG2GJmMDM1")
+SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/StylishNameFont")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/+aUamAA43_p4xMWE1")
 GITHUB = getenv("GITHUB", "https://github.com/TEAM-ISTKHAR")
 
 AUTO_LEAVING_ASSISTANT = getenv("AUTO_LEAVING_ASSISTANT", "False")
